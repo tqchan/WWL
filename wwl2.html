@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<title>wwl2</title>
+	
+</head>
+<body>
+	<div id="intro1">
+		<p></p>
+	</div>
+	<div id="form1">
+		<table>
+			<tr>
+				<td>精神的要求</td>
+				<td>低い</td>
+				<td><input type="range" min="0" max="100" value="50" id="range" name="range2" data-input="input2"></td>
+				<td>高い</td>
+			</tr>
+		</table>
+		
+	</div>
+	<script type="text/javascript">
+		window.onload = function init(){
+		  var elem = document.getElementById('range');
+		  var target = document.getElementById('value');
+		  var rangeValue = function (elem, target) {
+		    return function(evt){
+		      target.innerHTML = elem.value;
+		    }
+		  }
+		  elem.addEventListener('input', rangeValue(elem, target));
+		};
+	</script>
+</body>
+</html>
