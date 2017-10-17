@@ -4,18 +4,64 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<title>wwl2</title>
-	
+	<style>
+		#form1{
+			padding-left: 10%;
+		}
+		.input_range{
+			width: 100%;
+		}
+		.range_td{
+			width: 70%;
+		}
+	</style>
 </head>
 <body>
 	<div id="intro1">
 		<p></p>
 	</div>
 	<div id="form1">
-		<table>
+		<table cellpadding="5">
 			<tr>
 				<td>精神的要求</td>
 				<td>低い</td>
-				<td><input type="range" min="0" max="100" value="50" id="range" name="range2" data-input="input2"></td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range1" name="range2" class="input_range"></td>
+				<td>高い</td>
+			</tr>
+			<tr>
+				<td>身体的要求</td>
+				<td>低い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range2" name="range2" class="input_range"></td>
+				<td>高い</td>
+			</tr>
+			<tr>
+				<td>時間的切迫感</td>
+				<td>低い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range3" name="range2" class="input_range"></td>
+				<td>高い</td>
+			</tr>
+			<tr>
+				<td>作業達成感</td>
+				<td>悪い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range4" name="range2" class="input_range"></td>
+				<td>良い</td>
+			</tr>
+			<tr>
+				<td>努力</td>
+				<td>低い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range5" name="range2" class="input_range"></td>
+				<td>高い</td>
+			</tr>
+			<tr>
+				<td>不満</td>
+				<td>低い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range6" name="range2" class="input_range"></td>
+				<td>高い</td>
+			</tr>
+			<tr>
+				<td>全体的負担感</td>
+				<td>低い</td>
+				<td class="range_td"><input type="range" min="0" max="100" value="50" id="range7" name="range2" class="input_range"></td>
 				<td>高い</td>
 			</tr>
 		</table>

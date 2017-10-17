@@ -3,15 +3,153 @@
 <head>
 	<meta charset="UTF-8">
 	<title>WWL</title>
+	<style>
+		html,body {
+			width: 90%;
+			height:90%;
+		}
+		#wwl {
+			width: 100%;
+			height: 100%;
+		}
+		#wwl iframe{
+			width: 80%;
+			height: 80%;
+		}
+		button {
+			width: 6em;
+			height: 2em;
+		}
+		#form1{
+			padding-left: 10%;
+		}
+		.input_range{
+			width: 100%;
+		}
+		.range_td{
+			width: 70%;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-	<div id="name">
-		<form action="" name="form1" id="id_form1">
-			<input type="text" value="" name="name_text" id="id_nametext">
-		</form>
-	</div>
 	<div id="wwl">
-		<iframe src="" frameborder="0"></iframe>
+		<p>これからいくつかの質問が表示されるので，回答してください。<br>回答が終わったら下部の「next」ボタンを押してください</p>
+		<!-- <button onclick="inc()">next</button> -->
 	</div>
+	<div id="bu">
+		<button onclick="inc()">next</button>
+	</div>
+	<script type="text/javascript">
+		var no = 0;
+		var seishin = "精神的負荷";
+		var shintai = "身体的負荷";
+		var sagyou = "作業達成度";
+		var zikan = "時間的切迫感";
+		var doryoku = "努力";
+		var human = "不満";
+		var oustr = "";
+		var ra1,ra2,ra3,ra4,ra5,ra6,ra7 = 50;
+
+		function hyouzi() {
+			if (no == 0) {
+				document.getElementById("wwl").innerHTML='<p>これからいくつかの質問が表示されるので，回答してください。<br>回答が終わったら下部の「next」ボタンを押してください</p>';
+				document.getElementById("bu").innerHTML='<button onclick="inc()">next</button>';
+			}
+			if (no == 1) {
+				// document.getElementById("wwl").innerHTML='<iframe src="name.html" frameborder="0" name="childframe"></iframe>';
+				document.getElementById("wwl").innerHTML='<div id="name"><form action="" name="form1" id="name_form"><p>名前を入力してください</p><input type="text" value="" name="name_text" id="id_nametext"></form></div>';
+				document.getElementById("bu").innerHTML='<button onclick="nameht()">next</button>';
+			} else if (no == 2) {
+				// document.getElementById("wwl").innerHTML='<iframe src="wwl1.html" frameborder="0"></iframe>';
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(seishin)">精神的負荷</button></td><td><button onclick="wwl1(shintai)">身体的負荷</button></td></table></div>';
+				document.getElementById("bu").innerHTML='';
+			} else if (no == 3) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(seishin)">精神的負荷</button></td><td><button onclick="wwl1(sagyou)">作業達成度</button></td></table></div>';
+			}
+			else if (no == 4) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(seishin)">精神的負荷</button></td><td><button onclick="wwl1(zikan)">時間的切迫感</button></td></table></div>';
+			}
+			else if (no == 5) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(seishin)">精神的負荷</button></td><td><button onclick="wwl1(doryoku)">努力</button></td></table></div>';
+			}
+			else if (no == 6) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(seishin)">精神的負荷</button></td><td><button onclick="wwl1(human)">不満</button></td></table></div>';
+			}
+			else if (no == 7) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(shintai)">身体的負荷</button></td><td><button onclick="wwl1(sagyou)">作業達成度</button></td></table></div>';
+			}
+			else if (no == 8) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(shintai)">身体的負荷</button></td><td><button onclick="wwl1(zikan)">時間的切迫感</button></td></table></div>';
+			}
+			else if (no == 9) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(shintai)">身体的負荷</button></td><td><button onclick="wwl1(doryoku)">努力</button></td></table></div>';
+			}
+			else if (no == 10) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(shintai)">身体的負荷</button></td><td><button onclick="wwl1(human)">不満</button></td></table></div>';
+			}
+			else if (no == 11) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(sagyou)">作業達成度</button></td><td><button onclick="wwl1(zikan)">時間的切迫感</button></td></table></div>';
+			}
+			else if (no == 12) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(sagyou)">作業達成度</button></td><td><button onclick="wwl1(doryoku)">努力</button></td></table></div>';
+			}
+			else if (no == 13) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(sagyou)">作業達成度</button></td><td><button onclick="wwl1(human)">不満</button></td></table></div>';
+			}
+			else if (no == 14) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(zikan)">時間的切迫感</button></td><td><button onclick="wwl1(doryoku)">努力</button></td></table></div>';
+			}
+			else if (no == 15) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(zikan)">時間的切迫感</button></td><td><button onclick="wwl1(human)">不満</button></td></table></div>';
+			}
+			else if (no == 16) {
+				document.getElementById("wwl").innerHTML='<div id="intro1"><p>今行った作業についてお聞きします。下に示す2つの項目のうち，作業負荷・負担に関わりが深いと思う方をクリックしてください。</p></div><div id="wwl1form1"><table cellpadding="5"><tr><td><button onclick="wwl1(doryoku)">努力</button></td><td><button onclick="wwl1(human)">不満</button></td></table></div>';
+				// document.getElementById("bu").innerHTML='<button onclick="inc()">next</button>';
+			}
+			else if (no == 17) {
+				// document.getElementById("wwl").innerHTML='<iframe src="wwl2.html" frameborder="0"></iframe>';
+				document.getElementById("wwl").innerHTML='<div class="wwl2form"><form id="wwl2form1"><table cellpadding="5"><tr><td>精神的負荷</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range1" name="range2" class="input_range" onchange="showvalue()"></td><td>高い</td></tr><tr><td>身体的要求</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range2" name="range2" class="input_range" onchange="showvalue()"></td><td>高い</td></tr><tr><td>時間的切迫感</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range3" name="range2" class="input_range"  onchange="showvalue()"></td><td>高い</td></tr><tr><td>作業達成感</td><td>悪い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range4" name="range2" class="input_range"  onchange="showvalue()"></td><td>良い</td></tr><tr><td>努力</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range5" name="range2" class="input_range" onchange="showvalue()"></td><td>高い</td></tr><tr><td>不満</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range6" name="range2" class="input_range" onchange="showvalue()"></td><td>高い</td></tr><tr><td>全体的負担感</td><td>低い</td><td class="range_td"><input type="range" min="0" max="100" value="50" id="range7" name="range2" class="input_range" onchange="showvalue()"></td><td>高い</td></tr></table></form></div>';
+				document.getElementById("bu").innerHTML='<button onclick="fin()">fin</button>';
+			}
+		}
+		function inc() {
+			if (no < 17) {
+				no++;
+				hyouzi();
+			}
+		}
+		function fin() {
+			no = 0;
+			hyouzi();
+			oustr += "," + ra1 + "," + ra2 + "," + ra3 + "," + ra4 + "," + ra5 + "," + ra6 + "," + ra7;
+			console.log(oustr);
+			$.post(
+				'record.php',
+				{'kiroku' : oustr},
+			);
+			oustr = "";
+		}
+		function nameht() {
+			oustr += document.forms.name_form.id_nametext.value;
+			console.log(oustr);
+			inc();
+		}
+		function wwl1(str) {
+			oustr += "," + str;
+			console.log(oustr);
+			inc();
+		}
+		function showvalue() {
+			// oustr += document.forms.wwl2form1.range1.value;
+			ra1 = document.getElementById("range1").value;
+			ra2 = document.getElementById("range2").value;
+			ra3 = document.getElementById("range3").value;
+			ra4 = document.getElementById("range4").value;
+			ra5 = document.getElementById("range5").value;
+			ra6 = document.getElementById("range6").value;
+			ra7 = document.getElementById("range7").value;
+		}
+	</script>
 </body>
 </html>
